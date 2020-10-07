@@ -9,9 +9,14 @@ class App extends Component {
   render() {
     return (
       <div className="main_container">
-        <Logo></Logo>
-        <Search></Search> 
-        <Slider></Slider>
+        <Logo />
+        <Search />
+        <Slider bestPlacesName="USA" countryName="america" /> 
+        <Slider bestPlacesName="Brazil" countryName="brazil" />
+        <Slider bestPlacesName="Australia" countryName="australia" />
+        <Slider bestPlacesName="Vietnam" countryName="vietnam" />
+        
+        
         {/* <Content>
           <Slider></Slider>
           <Slider></Slider>
