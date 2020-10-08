@@ -18,7 +18,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
          fetch(place.placeImgUrl)
          .then(resp => resp.blob())
-         .then(data => place.placeImgUrl = URL.createObjectURL(data))
+         .then(data => place.placeImgUrl = URL.createObjectURL(data));
 
          return place;
 
@@ -32,7 +32,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
    useEffect(() => {
       renderPlace();
-   }, []);
+   }, []); 
 
 
    //  Custom Arrow
