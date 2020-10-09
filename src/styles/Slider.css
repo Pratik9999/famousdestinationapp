@@ -12,6 +12,7 @@
    text-shadow: 0px 2px 2px #C4C4C4; 
    display: flex;
    align-items: center;
+   margin-bottom: 20px;
 }
 
 .slider_container h3::before, .slider_container h3::after  {

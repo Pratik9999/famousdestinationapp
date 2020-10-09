@@ -17,7 +17,7 @@ const PlaceInfo = ({ placeInfoImg }) => {
 
       const paragraph = data.placeDescription.split(/[\n\r]/g);    
       const  paras = paragraph.map((para, i) => {
-         return <span key={i}>{para} <span className="paraSpacing"></span></span>;
+         return <span key={i} className="paraSpacing">{para} </span>; 
       });   
 
       const newPlace =  Object.assign(data, { placeImgUrl : url, placeDescription : paras }); 

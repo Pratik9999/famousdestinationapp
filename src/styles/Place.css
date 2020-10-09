@@ -1,9 +1,9 @@
 
 .place_card {
-   max-width: 320px;
+   min-width: 320px;
    /* height: 380px; */
    border-radius: 5px;
-   margin: 20px auto;
+   /* margin: 20px auto; */
    display: grid;
    grid-template-columns: 1fr;
    grid-template-rows: 320px 1fr;
@@ -38,6 +38,7 @@
    border-radius: 5px;
    padding: 10px;
    width: 80px;
+   margin-left: 5px;
 }
 
 .rating img {
