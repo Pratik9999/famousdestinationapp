@@ -57,6 +57,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
                   return (
                      <Place
                         key={place.id}
+                        placeId={place.id}
                         placeImg={place.placeImgUrl}
                         placeName={place.placeName}
                         placeRatings={place.placeRatings}

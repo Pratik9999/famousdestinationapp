@@ -11,6 +11,11 @@ body {
    color: #424242;
 }
 
+a {
+   color: #424242;
+   text-decoration: none;
+}
+
 .main_container { 
    max-width: 88vw;
    margin: 0 auto;

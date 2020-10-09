@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import '../styles/PlaceInfo.css';
 import Location from '../images/location.svg';
 
-const PlaceInfo = ({ placeInfoImg }) => {
+const PlaceInfo = ({ match }) => {
 
    const [place, setPlace] = useState({});
 
    const renderPlace = async () => {
-      const resp = await fetch('http://localhost:8080/famousdestination/api/places/2065');  
+
+      const resp = await fetch(`http://localhost:8080/famousdestination/api/places/${match.params.id}`);  
       const data = await resp.json();
 
       const respImg = await fetch(data.placeImgUrl);
@@ -38,7 +39,7 @@ const PlaceInfo = ({ placeInfoImg }) => {
                {place.placeDescription}
             </p>
             <div className="placeInfo_location"> 
-               <img src={Location} alt="location" />
+               <img src={Location} alt="location" /> 
                <p>{place.placelocation}</p>
             </div>
          </div>

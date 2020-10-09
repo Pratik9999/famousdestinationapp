@@ -5,6 +5,7 @@ import Search from './Components/Search';
 import PlaceInfo from './Components/PlaceInfo';
 import Place from './Components/Place';
 import Content from './Components/Content';
+import { Route, Switch } from 'react-router-dom';
 import './styles/App.css';
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
               return (
                 <Place
                   key={place.id}
+                  placeId={place.id}
                   placeImg={place.placeImgUrl}
                   placeName={place.placeName}
                   placeRatings={place.placeRatings}
@@ -77,13 +79,20 @@ const App = () => {
   }, []);
 
   return (
-    <div className="main_container">
-      <Logo />
-      <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
-      <Content>
-        {mainContent} 
-      </Content> 
-    </div> 
+      <div>
+        <Switch>
+        <Route exact path="/">
+          <div className="main_container">             
+              <Logo />
+              <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
+              <Content>
+                {mainContent} 
+              </Content>  
+          </div>
+          </Route>
+          <Route exact path="/place/:id" component={PlaceInfo} /> 
+        </Switch>
+      </div>
   );
 
 }
