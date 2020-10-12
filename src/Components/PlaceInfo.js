@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/PlaceInfo.css';
 import Location from '../images/location.svg';
+import Loading from './Loading';
 
 const PlaceInfo = ({ match }) => {
 
    const [place, setPlace] = useState({});
+   const [isLoading, setIsLoading] = useState(true);
 
    const renderPlace = async () => {
 
@@ -23,7 +25,8 @@ const PlaceInfo = ({ match }) => {
 
       const newPlace =  Object.assign(data, { placeImgUrl : url, placeDescription : paras }); 
       
-      setPlace(newPlace);  
+      setPlace(newPlace); 
+      setIsLoading(false); 
    }
 
    useEffect(() => {
@@ -31,18 +34,24 @@ const PlaceInfo = ({ match }) => {
    }, []); 
 
    return (
-      <div className="placeInfo_container">
-         <img className="placeInfo_img" src={place.placeImgUrl} alt="place" /> 
-         <div className="placeInfo_info">
-            <h2>{place.placeName}</h2>
-            <p>
-               {place.placeDescription}
-            </p>
-            <div className="placeInfo_location"> 
-               <img src={Location} alt="location" /> 
-               <p>{place.placelocation}</p>
+      <div>
+         {
+         !(isLoading) ? 
+         <div className="placeInfo_container">
+            <img className="placeInfo_img" src={place.placeImgUrl} alt="place" /> 
+            <div className="placeInfo_info">
+               <h2>{place.placeName}</h2>
+               <p>
+                  {place.placeDescription}
+               </p>
+               <div className="placeInfo_location"> 
+                  <img src={Location} alt="location" /> 
+                  <p>{place.placelocation}</p>
+               </div>
             </div>
-         </div>
+         </div> :
+         <Loading />
+         }
       </div>
    );
 }

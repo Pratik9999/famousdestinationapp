@@ -9,7 +9,7 @@ import Place from './Place';
 
 const Slider = ({ bestPlacesName, countryName }) => {
 
-   const renderPlace = async (countryName) => {
+   const renderPlace = async () => {
 
       const resp = await fetch(`http://localhost:8080/famousdestination/api/places/country/${countryName}`);
       const data = await resp.json();
@@ -30,8 +30,8 @@ const Slider = ({ bestPlacesName, countryName }) => {
    const [places, setPlaces] = useState([]);
 
    useEffect(() => {
-      renderPlace(countryName); 
-   }, []); 
+      renderPlace(); 
+   }, []);  
 
 
 
