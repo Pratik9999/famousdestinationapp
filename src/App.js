@@ -5,22 +5,20 @@ import Search from './Components/Search';
 import PlaceInfo from './Components/PlaceInfo';
 import Place from './Components/Place';
 import Content from './Components/Content';
+import Loading from './Components/Loading';
 import { Route, Switch } from 'react-router-dom';
 import './styles/App.css';
 
 const App = () => {
 
   // State
-  const [mainContent, setMainContent] = useState((
-    <div>
-      <Slider bestPlacesName="USA" countryName="america" /> 
-      <Slider bestPlacesName="Brazil" countryName="brazil" />
-      <Slider bestPlacesName="Australia" countryName="australia" />
-      <Slider bestPlacesName="Vietnam" countryName="vietnam" />
-    </div>
-  ));
-
   const [searchValue, setSearchValue] = useState('');
+
+  const [mainContent, setMainContent] = useState(( 
+    <div>
+
+    </div> 
+  )); 
 
 
   const onSearchChange = (event) => {
@@ -74,21 +72,37 @@ const App = () => {
     }
   }
 
+
+
   useEffect(() => {
+    setMainContent(
+      <div>
+        <Slider bestPlacesName="Brazil" countryName="brazil" />
+        <Slider bestPlacesName="USA" countryName="america" /> 
+        <Slider bestPlacesName="Australia" countryName="australia" />
+        <Slider bestPlacesName="Vietnam" countryName="vietnam" /> 
+      </div>
+    );
+
+    setTimeout(() => {
+      const loader = document.querySelector('.loding_container');
+      loader.style.display = 'none';
+    }, 6000) 
 
   }, []);
 
   return (
       <div>
+        <Loading />
         <Switch>
-        <Route exact path="/">
-          <div className="main_container">             
+          <Route exact path="/">
+            <div className="main_container">  
               <Logo />
               <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
               <Content>
                 {mainContent} 
-              </Content>  
-          </div>
+              </Content> 
+            </div> 
           </Route>
           <Route exact path="/place/:id" component={PlaceInfo} /> 
         </Switch>

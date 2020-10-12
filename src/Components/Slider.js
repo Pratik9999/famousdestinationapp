@@ -25,7 +25,6 @@ const Slider = ({ bestPlacesName, countryName }) => {
       })
 
       setPlaces(newData);
-
    }
 
    const [places, setPlaces] = useState([]);
@@ -61,12 +60,12 @@ const Slider = ({ bestPlacesName, countryName }) => {
                         placeImg={place.placeImgUrl}
                         placeName={place.placeName}
                         placeRatings={place.placeRatings}
-                      />
+                     />
                   );
                })
             }
          </Carousel>
-      </div>
+      </div> 
    );
 
 }
