@@ -4,7 +4,9 @@ import Carousel, { consts } from 'react-elastic-carousel';
 import '../styles/Slider.css';
 import LeftArrow from '../images/left-arrow.svg';
 import RightArrow from '../images/right-arrow.svg';
+import Loading from './Loading';
 import Place from './Place';
+
 
 
 const Slider = ({ bestPlacesName, countryName }) => {
@@ -25,13 +27,15 @@ const Slider = ({ bestPlacesName, countryName }) => {
       })
 
       setPlaces(newData);
+      setIsLoading(false);
    }
 
    const [places, setPlaces] = useState([]);
+   const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
       renderPlace(); 
-   }, []);  
+   }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
 
 
@@ -42,30 +46,36 @@ const Slider = ({ bestPlacesName, countryName }) => {
       return (
         <button className="sliderBtn" onClick={onClick} disabled={isEdge}>
           {pointer}  
-        </button>
+        </button> 
       )
    }
 
    return (
-      <div className="slider_container"> 
-         <h3>Best Places In {bestPlacesName}</h3>
-         <Carousel itemsToShow={3} renderArrow={myArrow} itemsToScroll={2} 
-         transitionMs={800} itemPadding={[10, 20]}>    
-            {
-               places.map((place) => {
-                  return (
-                     <Place
-                        key={place.id}
-                        placeId={place.id}
-                        placeImg={place.placeImgUrl}
-                        placeName={place.placeName}
-                        placeRatings={place.placeRatings}
-                     />
-                  );
-               })
-            }
-         </Carousel>
-      </div> 
+      <div>
+         {
+         !(isLoading) ?
+         <div className="slider_container"> 
+            <h3>Best Places In {bestPlacesName}</h3>
+            <Carousel itemsToShow={3} renderArrow={myArrow} itemsToScroll={2} 
+            transitionMs={800} itemPadding={[10, 20]}>    
+               {
+                  places.map((place) => {
+                     return (
+                        <Place
+                           key={place.id}
+                           placeId={place.id}
+                           placeImg={place.placeImgUrl}
+                           placeName={place.placeName}
+                           placeRatings={place.placeRatings}
+                        />
+                     );
+                  })
+               }
+            </Carousel>
+         </div> :
+         <Loading />
+         }
+      </div>
    );
 
 }

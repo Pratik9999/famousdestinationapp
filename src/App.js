@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Loading from './Components/Loading';
+import PlaceInfo from './Components/PlaceInfo';
+import './styles/App.css';
+
 import Logo from './Components/Logo';
 import Slider from './Components/Slider';
-import Search from './Components/Search';
-import PlaceInfo from './Components/PlaceInfo';
-import Place from './Components/Place';
-import Content from './Components/Content';
-import Loading from './Components/Loading';
-import { Route, Switch } from 'react-router-dom';
-import './styles/App.css';
+import Search from'./Components/Search';
+import Place from'./Components/Place';
+import Content from'./Components/Content';
 
 const App = () => {
 
@@ -15,7 +16,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const [mainContent, setMainContent] = useState(( 
-    <div>
+    <div> 
 
     </div> 
   )); 
@@ -72,8 +73,6 @@ const App = () => {
     }
   }
 
-
-
   useEffect(() => {
     setMainContent(
       <div>
@@ -87,7 +86,7 @@ const App = () => {
     setTimeout(() => {
       const loader = document.querySelector('.loding_container');
       loader.style.display = 'none';
-    }, 6000) 
+    }, 6000)
 
   }, []);
 
@@ -97,15 +96,15 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <div className="main_container">  
-              <Logo />
-              <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
-              <Content>
-                {mainContent} 
-              </Content> 
+                <Logo />
+                <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
+                <Content>
+                  {mainContent} 
+                </Content> 
             </div> 
           </Route>
           <Route exact path="/place/:id" component={PlaceInfo} /> 
-        </Switch>
+        </Switch> 
       </div>
   );
 
