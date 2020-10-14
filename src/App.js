@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom'; 
 import Loading from './Components/Loading';
 import PlaceInfo from './Components/PlaceInfo';
 import './styles/App.css';
-
 import Logo from './Components/Logo';
 import Slider from './Components/Slider';
 import Search from'./Components/Search';
 import Place from'./Components/Place';
 import Content from'./Components/Content';
+import { motion, useCycle } from 'framer-motion';
+
 
 const App = () => {
 
@@ -73,6 +74,22 @@ const App = () => {
     }
   }
 
+  const containerVariant = {
+    initi : {
+      opacity : 0
+    },
+    startingAnimation : {
+        opacity : 1,
+        transition : { delay: 6, duration: 0.8, type: "tween" } 
+    },
+    delayedAnimation : {
+        opacity : 1,
+        transition : { delay: 0, duration: 1, type: "tween" }       
+    }
+  }
+
+  const [animation, cycleAnimation] = useCycle("startingAnimation", "delayedAnimation");
+
   useEffect(() => {
     setMainContent(
       <div>
@@ -86,26 +103,34 @@ const App = () => {
     setTimeout(() => {
       const loader = document.querySelector('.loding_container');
       loader.style.display = 'none';
-    }, 6000)
+      cycleAnimation(); 
+    }, 6000); 
 
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps 
 
-  return (
-      <div>
-        <Loading />
-        <Switch>
-          <Route exact path="/">
-            <div className="main_container">  
-                <Logo />
-                <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
-                <Content>
-                  {mainContent} 
-                </Content> 
-            </div> 
-          </Route>
-          <Route exact path="/place/:id" component={PlaceInfo} /> 
-        </Switch> 
-      </div>
+
+
+  return (  
+    <div>
+      <Loading /> 
+      <Switch>
+        <Route exact path="/">
+          <motion.div 
+            className="main_container"
+            variants={containerVariant}
+            initial="initi"
+            animate={animation} 
+          >  
+              <Logo />
+              <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
+              <Content>
+                {mainContent} 
+              </Content> 
+          </motion.div> 
+        </Route>
+        <Route exact path="/place/:id" component={PlaceInfo} /> 
+      </Switch> 
+    </div>
   );
 
 }
