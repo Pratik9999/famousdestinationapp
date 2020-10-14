@@ -9,6 +9,7 @@ import Place from './Place';
 
 
 
+
 const Slider = ({ bestPlacesName, countryName }) => {
 
    const renderPlace = async () => {

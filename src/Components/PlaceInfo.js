@@ -4,6 +4,7 @@ import '../styles/PlaceInfo.css';
 import Location from '../images/location.svg';
 import Loading from './Loading';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'; 
 
 const PlaceInfo = ({ match }) => {
 
@@ -34,11 +35,31 @@ const PlaceInfo = ({ match }) => {
       renderPlace();
    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+   const placeInfoVariant = { 
+      initi : {
+         opacity : 0
+      },
+      startingAnimation : {
+         opacity : 1,
+         transition : { delay: 0.6, duration: 0.4, type: "tween" } 
+      },
+      exit : {
+         opacity : 0,  
+         transition : { delay: 0.4, duration: 0.4, type: "tween" }        
+      }
+   }
+
    return (
       <div>
          {
          !(isLoading) ? 
-         <div className="placeInfo_container">
+         <motion.div 
+            className="placeInfo_container"
+            variants={placeInfoVariant} 
+            initial="initi"
+            animate="startingAnimation"
+            exit="exit"
+         >
             <img className="placeInfo_img" src={place.placeImgUrl} alt="place" /> 
             <div className="placeInfo_info">
                <h2>{place.placeName}</h2>
@@ -51,7 +72,7 @@ const PlaceInfo = ({ match }) => {
                </div>
                <Link to="/"><span className="back_to_home_btn">Back To Home</span></Link> 
             </div>
-         </div> :
+         </motion.div> :
          <Loading />
          }
       </div>

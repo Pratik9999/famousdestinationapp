@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom'; 
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom'; 
 import Loading from './Components/Loading';
 import PlaceInfo from './Components/PlaceInfo';
 import './styles/App.css';
@@ -8,10 +8,20 @@ import Slider from './Components/Slider';
 import Search from'./Components/Search';
 import Place from'./Components/Place';
 import Content from'./Components/Content';
-import { motion, useCycle } from 'framer-motion';
+import { motion, useCycle, AnimatePresence } from 'framer-motion';
 
 
 const App = () => {
+
+  const location = useLocation();
+  const history = useHistory();
+
+  history.listen((location) => {
+    const path = location.pathname;
+    if(path.startsWith("/place")) {   
+      window.scrollTo(0, 0); 
+    }
+  });
 
   // State
   const [searchValue, setSearchValue] = useState('');
@@ -83,8 +93,13 @@ const App = () => {
         transition : { delay: 6, duration: 0.8, type: "tween" } 
     },
     delayedAnimation : {
-        opacity : 1,
-        transition : { delay: 0, duration: 1, type: "tween" }       
+      opacity : 1,
+      transition : { delay: 0, duration: 1, type: "tween" }       
+    },
+    exit : {
+      opacity : 0,
+      x: '-100vw',
+      transition : { delay: 0, duration: 0.8, type: "tween" }  
     }
   }
 
@@ -113,23 +128,26 @@ const App = () => {
   return (  
     <div>
       <Loading /> 
-      <Switch>
-        <Route exact path="/">
-          <motion.div 
-            className="main_container"
-            variants={containerVariant}
-            initial="initi"
-            animate={animation} 
-          >  
-              <Logo />
-              <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
-              <Content>
-                {mainContent} 
-              </Content> 
-          </motion.div> 
-        </Route>
-        <Route exact path="/place/:id" component={PlaceInfo} /> 
-      </Switch> 
+      <AnimatePresence>
+        <Switch location={location} key={location.key}>
+          <Route exact path="/">
+            <motion.div 
+              className="main_container"
+              variants={containerVariant}
+              initial="initi"
+              animate={animation} 
+              exit="exit" 
+            >  
+                <Logo />
+                <Search onSearchChange={onSearchChange} onSearchBtnClickOrEnter={onSearchBtnClickOrEnter} />
+                <Content>
+                  {mainContent} 
+                </Content> 
+            </motion.div> 
+          </Route>
+          <Route exact path="/place/:id" component={PlaceInfo} />  
+        </Switch> 
+      </AnimatePresence>
     </div>
   );
 
