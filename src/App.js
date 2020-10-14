@@ -72,7 +72,7 @@ const App = () => {
       setMainContent(placeGrid);
 
     } else {
-      const message = <p>Cannot found famous destinations.</p>;
+      const message = <p className="message">Cannot found famous destinations.</p>;
       setMainContent(message);
     }
 
