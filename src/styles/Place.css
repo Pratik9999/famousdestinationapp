@@ -1,6 +1,6 @@
 
 .place_card {
-   min-width: 320px;
+   /* min-width: 320px; */ 
    border-radius: 5px;
    display: grid;
    grid-template-columns: 1fr;
