@@ -73,7 +73,19 @@ const App = () => {
       setMainContent(placeGrid);
 
     } else {
-      const message = <p className="message">Cannot found famous destinations.</p>;
+      const message = (
+      <div>
+        <p className="message">
+        <span>Cannot found famous destinations.</span>
+        <span>You can Search for India, America, China, Brazil, Russia, Mexico, Vietnam, South Africa, Australia and Japan. </span>
+        </p>
+        <Slider bestPlacesName="Brazil" countryName="brazil" />
+        <Slider bestPlacesName="USA" countryName="america" /> 
+        <Slider bestPlacesName="Australia" countryName="australia" />
+        <Slider bestPlacesName="Vietnam" countryName="vietnam" /> 
+      </div> 
+      );
+      
       setMainContent(message);
     }
 

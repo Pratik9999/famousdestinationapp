@@ -30,7 +30,7 @@ const Footer = () => {
             </div>           
          </div>
          <h6>
-            Made By Pratik Chauhan, Github repo for this website is : &nbsp;&nbsp;
+            Developed By Pratik Chauhan, Github repo for this website is : &nbsp;&nbsp;
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/Pratik9999/famousdestinationapp">Famous Destination</a> 
          </h6>
       </div>
