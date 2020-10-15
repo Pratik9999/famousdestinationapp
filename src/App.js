@@ -8,6 +8,7 @@ import Slider from './Components/Slider';
 import Search from'./Components/Search';
 import Place from'./Components/Place';
 import Content from'./Components/Content';
+import Footer from'./Components/Footer';
 import { motion, useCycle, AnimatePresence } from 'framer-motion';
 
 
@@ -133,7 +134,7 @@ const App = () => {
           <Route exact path="/">
             <motion.div 
               className="main_container"
-              variants={containerVariant}
+              variants={containerVariant} 
               initial="initi"
               animate={animation} 
               exit="exit" 
@@ -144,6 +145,7 @@ const App = () => {
                   {mainContent} 
                 </Content> 
             </motion.div> 
+            <Footer />
           </Route>
           <Route exact path="/place/:id" component={PlaceInfo} />  
         </Switch> 
