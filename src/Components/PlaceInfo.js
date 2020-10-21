@@ -13,7 +13,8 @@ const PlaceInfo = ({ match }) => {
 
    const renderPlace = async () => {
 
-      const resp = await fetch(`http://localhost:8080/famousdestination/api/places/${match.params.id}`);  
+      const resp = await fetch(
+      `https://famous-destination.herokuapp.com/famousdestination/api/places/${match.params.id}`);  
       const data = await resp.json();
 
       const respImg = await fetch(data.placeImgUrl);
@@ -25,7 +26,7 @@ const PlaceInfo = ({ match }) => {
          return <span key={i} className="paraSpacing">{para} </span>; 
       });   
 
-      const newPlace =  Object.assign(data, { placeImgUrl : url, placeDescription : paras }); 
+      const newPlace =  Object.assign(data, { placeImgUrl : url, placeDescription : paras });  
       
       setPlace(newPlace); 
       setIsLoading(false); 
@@ -79,4 +80,4 @@ const PlaceInfo = ({ match }) => {
    );
 }
  
-export default PlaceInfo;
+export default PlaceInfo; 

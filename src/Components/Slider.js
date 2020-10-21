@@ -14,7 +14,8 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
    const renderPlace = async () => {
 
-      const resp = await fetch(`http://localhost:8080/famousdestination/api/places/country/${countryName}`);
+      const resp = await fetch(
+      `https://famous-destination.herokuapp.com/famousdestination/api/places/country/${countryName}`); 
       const data = await resp.json();
 
       const newData = data.map((place) => {
@@ -81,4 +82,4 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
 }
  
-export default Slider;
+export default Slider; 
