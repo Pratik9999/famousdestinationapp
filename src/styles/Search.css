@@ -32,7 +32,7 @@
    width: 10%;
    height: 60px;
    background-color: #FBEEEE;
-   border-radius: 0px 30px 30px 0px;
+   border-radius: 0px 30px 30px 0px; 
    border: none;
    outline: none;
    cursor: pointer;
@@ -45,3 +45,4 @@
    width: 28px;
    height: 28px; 
 }
+
