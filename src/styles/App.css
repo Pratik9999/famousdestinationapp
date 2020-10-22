@@ -44,4 +44,22 @@ a {
    font-weight: 300;
 }
 
+.notResponsiveMessage {
+   display: none; 
+   text-align: center;
+   padding: 40px; 
+}
+
+@media screen and (max-width: 1100px) {
+
+   .parent_container > * {
+      display: none;
+   }
+
+   .notResponsiveMessage {
+      display: block;
+   }
+
+}
+
 

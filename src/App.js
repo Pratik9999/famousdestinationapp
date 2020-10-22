@@ -135,12 +135,17 @@ const App = () => {
       cycleAnimation(); 
     }, 6000); 
 
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps 
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const notResponsiveMessage = <p className="notResponsiveMessage">This website is not yet responsive for mobile and tablet, 
+                                but can you view on desktop or laptop.</p> 
 
 
 
-  return (  
-    <div>
+  return ( 
+    <> 
+    {notResponsiveMessage}
+    <div className="parent_container">
       <Loading /> 
       <AnimatePresence>
         <Switch location={location} key={location.key}>
@@ -164,6 +169,7 @@ const App = () => {
         </Switch> 
       </AnimatePresence>
     </div>
+    </>
   );
 
 }
