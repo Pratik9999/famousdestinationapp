@@ -104,7 +104,7 @@ const App = () => {
     },
     startingAnimation : {
         opacity : 1,
-        transition : { delay: 3, duration: 0.8, type: "tween" }    
+        transition : { delay: 8, duration: 0.8, type: "tween" }    
     },
     delayedAnimation : {
       opacity : 1,
@@ -133,7 +133,7 @@ const App = () => {
       const loader = document.querySelector('.loding_container');
       loader.style.display = 'none';
       cycleAnimation(); 
-    }, 3000);   
+    }, 8000);   
 
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
