@@ -133,7 +133,7 @@ const App = () => {
       const loader = document.querySelector('.loding_container');
       loader.style.display = 'none';
       cycleAnimation(); 
-    }, 6000); 
+    }, 8000); 
 
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
