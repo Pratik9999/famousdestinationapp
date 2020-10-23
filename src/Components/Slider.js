@@ -6,14 +6,13 @@ import LeftArrow from '../images/left-arrow.svg';
 import RightArrow from '../images/right-arrow.svg';
 import Loading from './Loading';
 import Place from './Place';
-import { Route, Switch, useLocation, useHistory } from 'react-router-dom'; 
+import {  useHistory } from 'react-router-dom'; 
 
 
 
 
 const Slider = ({ bestPlacesName, countryName }) => {
 
-   const location = useLocation();
    const history = useHistory(); 
 
    const renderPlace = async () => {
@@ -40,8 +39,10 @@ const Slider = ({ bestPlacesName, countryName }) => {
          const path = location.pathname;
          if(path.startsWith("/place")) {   
             setTimeout(() => setIsLoading(false), 15000);  
+         } else {
+            setIsLoading(false);
          }
-      });
+      }); 
 
 
 
