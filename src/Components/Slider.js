@@ -30,7 +30,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
       setPlaces(newData);
       
-      setTimeout(setIsLoading(false), 20000);  
+      setTimeout(() => setIsLoading(false), 15000);   
    }
 
    const [places, setPlaces] = useState([]);
