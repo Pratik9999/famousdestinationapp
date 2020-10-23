@@ -38,13 +38,12 @@ const Slider = ({ bestPlacesName, countryName }) => {
       history.listen((location) => {
          const path = location.pathname;
          if(path.startsWith("/place")) {   
-            setTimeout(() => setIsLoading(false), 15000);  
-         } else {
-            setIsLoading(false);
-         }
+            setTimeout(() => setIsLoading(false), 15000); 
+            return; 
+         } 
       }); 
 
-
+      setIsLoading(false); 
 
    }
 
