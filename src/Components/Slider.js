@@ -6,14 +6,13 @@ import LeftArrow from '../images/left-arrow.svg';
 import RightArrow from '../images/right-arrow.svg';
 import Loading from './Loading';
 import Place from './Place';
-import {  useHistory } from 'react-router-dom'; 
 
 
 
 
 const Slider = ({ bestPlacesName, countryName }) => {
 
-   const history = useHistory(); 
+   let firstVist = true;
 
    const renderPlace = async () => {
 
@@ -32,18 +31,13 @@ const Slider = ({ bestPlacesName, countryName }) => {
       })
 
       setPlaces(newData);
-      
-
-
-      history.listen((location) => {
-         const path = location.pathname;
-         if(path.startsWith("/place")) {   
-            setTimeout(() => setIsLoading(false), 15000); 
-            return; 
-         } 
-      }); 
-
-      setIsLoading(false); 
+   
+      if(firstVist) {
+         setIsLoading(false); 
+         firstVist = false;
+      } else {
+         setTimeout(() => setIsLoading(false), 15000); 
+      }
 
    }
 
