@@ -72,9 +72,9 @@ const PlaceInfo = ({ match }) => {
                   <img src={Location} alt="location" /> 
                   <p>{place.placelocation}</p>
                </div>
-               <button onClick={this.props.history.goBack}><span className="back_to_home_btn">Back To Home</span></button> 
+               <button onClick={this.context.router.goBack()}><span className="back_to_home_btn">Back To Home</span></button> 
             </div>
-         </motion.div> : 
+         </motion.div> :  
          <Loading />
          }
       </div>
