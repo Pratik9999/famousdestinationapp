@@ -13,6 +13,9 @@ import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 
 const Slider = ({ bestPlacesName, countryName }) => {
 
+   const location = useLocation();
+   const history = useHistory(); 
+
    const renderPlace = async () => {
 
       const resp = await fetch(
@@ -31,8 +34,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
       setPlaces(newData);
       
-      const location = useLocation();
-      const history = useHistory();
+
 
       history.listen((location) => {
          const path = location.pathname;
