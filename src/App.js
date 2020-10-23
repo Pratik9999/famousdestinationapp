@@ -21,6 +21,7 @@ const App = () => {
     const path = location.pathname;
     if(path.startsWith("/place")) {   
       window.scrollTo(0, 0); 
+      
     }
   });
 
