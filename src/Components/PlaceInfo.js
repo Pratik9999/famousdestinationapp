@@ -4,8 +4,7 @@ import '../styles/PlaceInfo.css';
 import Location from '../images/location.svg';
 import Loading from './Loading';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion'; 
-import { withRouter } from 'react-router-dom';
+import { motion } from 'framer-motion';   
 
 const PlaceInfo = ({ match }) => {
 
@@ -72,9 +71,9 @@ const PlaceInfo = ({ match }) => {
                   <img src={Location} alt="location" /> 
                   <p>{place.placelocation}</p>
                </div>
-               <button onClick={this.context.router.goBack()}><span className="back_to_home_btn">Back To Home</span></button> 
+               <Link to="/"><span className="back_to_home_btn">Back To Home</span></Link>   
             </div>
-         </motion.div> :  
+         </motion.div> :    
          <Loading />
          }
       </div>

@@ -28,7 +28,9 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
       setPlaces(newData);
    
-      setIsLoading(false); 
+      setTimeout(() => {
+         setIsLoading(false);
+      }, 5000);    
 
    }
 
