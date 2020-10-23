@@ -5,6 +5,7 @@ import Location from '../images/location.svg';
 import Loading from './Loading';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion'; 
+import { withRouter } from 'react-router-dom';
 
 const PlaceInfo = ({ match }) => {
 
@@ -71,7 +72,7 @@ const PlaceInfo = ({ match }) => {
                   <img src={Location} alt="location" /> 
                   <p>{place.placelocation}</p>
                </div>
-               <Link to="/"><span className="back_to_home_btn">Back To Home</span></Link> 
+               <Link to={this.props.history.goBack}><span className="back_to_home_btn">Back To Home</span></Link> 
             </div>
          </motion.div> :
          <Loading />
