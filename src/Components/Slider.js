@@ -8,11 +8,7 @@ import Loading from './Loading';
 import Place from './Place';
 
 
-
-
 const Slider = ({ bestPlacesName, countryName }) => {
-
-   let firstVist = true;
 
    const renderPlace = async () => {
 
@@ -32,12 +28,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
       setPlaces(newData);
    
-      if(firstVist) {
-         setIsLoading(false); 
-         firstVist = false;
-      } else {
-         setTimeout(() => setIsLoading(false), 15000); 
-      }
+      setIsLoading(false); 
 
    }
 
@@ -46,7 +37,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
 
    useEffect(() => {
       renderPlace(); 
-   }, []);  // eslint-disable-line react-hooks/exhaustive-deps
+   }, []);  // eslint-disable-line react-hooks/exhaustive-deps 
 
 
 
