@@ -85,12 +85,12 @@ const App = () => {
         </p>
         <Slider bestPlacesName="Brazil" countryName="brazil" />
         <Slider bestPlacesName="USA" countryName="america" /> 
-        <Slider bestPlacesName="Australia" countryName="australia" />
-        <Slider bestPlacesName="Vietnam" countryName="vietnam" /> 
+        <Slider bestPlacesName="Australia" countryName="australia" /> 
+        <Slider bestPlacesName="Vietnam" countryName="vietnam" />  
       </div> 
       );
       
-      setMainContent(message);
+      setMainContent(message); 
     }
 
   }

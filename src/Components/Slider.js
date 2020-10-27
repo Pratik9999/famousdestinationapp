@@ -70,7 +70,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
                            placeId={place.id}
                            placeImg={place.placeImgUrl}
                            placeName={place.placeName}
-                           placeRatings={place.placeRatings}
+                           placeRatings={place.placeRatings} 
                         />
                      );
                   })
