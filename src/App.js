@@ -59,8 +59,7 @@ const App = () => {
       const placeGrid = () => {
         return(
           <div className ="placeGrid">
-            {newData.map((place) => {
-              console.log(place.placeImgUrl); 
+            {newData.map((place) => { 
               return (
                 <Place
                   key={place.id}
