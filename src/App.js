@@ -83,10 +83,12 @@ const App = () => {
         <span>Cannot found famous destinations.</span>
         <span>You can Search for India, America, China, Brazil, Russia, Mexico, Vietnam, South Africa, Australia and Japan. </span>
         </p>
-        <Slider bestPlacesName="Brazil" countryName="brazil" />
-        <Slider bestPlacesName="USA" countryName="america" /> 
-        <Slider bestPlacesName="Australia" countryName="australia" /> 
-        <Slider bestPlacesName="Vietnam" countryName="vietnam" />  
+        <div>
+          <Slider bestPlacesName="Brazil" countryName="brazil" />
+          <Slider bestPlacesName="USA" countryName="america" /> 
+          <Slider bestPlacesName="Australia" countryName="australia" /> 
+          <Slider bestPlacesName="Vietnam" countryName="vietnam" />  
+        </div> 
       </div> 
       );
       
