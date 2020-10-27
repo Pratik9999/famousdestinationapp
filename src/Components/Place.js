@@ -7,7 +7,7 @@ const Place = ({ placeId ,placeImg, placeName, placeRatings }) => {
    return (
       <Link to={`/place/${placeId}`}>
          <div className="place_card">
-            <img src={placeImg} alt="Place" />
+            <img className="place_card_img" src={placeImg} alt="Place" /> 
             <div className="place_headings">
                <h4>{placeName}</h4>
                <div className="rating">

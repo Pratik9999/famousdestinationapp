@@ -42,22 +42,25 @@ const App = () => {
   const fetchingPlaceByCountryName = async (countryName) => {
 
     const resp = await fetch(
-    `https://famous-destination.herokuapp.com/famousdestination/api/places/country/${countryName}`);
+    `http://localhost:8080/famousdestination/api/places/country/${countryName}`);
     const data = await resp.json();
 
-    if(!(data.hasOwnProperty('status'))) {
-      const newData = data.map((place) => {
-        fetch(place.placeImgUrl)
-        .then(resp => resp.blob())
-        .then(data => place.placeImgUrl = URL.createObjectURL(data));
+      if(!(data.hasOwnProperty('status'))) {
+        const newData = data.map((place) => {
 
-        return place;
+        let url = place.placeImgUrl + "?width=600&height=600";     
+
+        Object.assign(place, { placeImgUrl : url });   
+
+        return place;     
       })
+
 
       const placeGrid = () => {
         return(
           <div className ="placeGrid">
             {newData.map((place) => {
+              console.log(place.placeImgUrl); 
               return (
                 <Place
                   key={place.id}
@@ -139,7 +142,7 @@ const App = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const notResponsiveMessage = <p className="notResponsiveMessage">This website is not yet responsive for mobile and tablet, 
-                                but can you view on desktop or laptop.</p> 
+                                but can you view on desktop or laptop.</p>  
 
 
 

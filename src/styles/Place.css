@@ -13,10 +13,10 @@
    transform: scale(0.96);
 }
 
-.place_card img {
+.place_card_img{
    height: 320px;
    border-radius: 5px 5px 0px 0px;
-   max-width: 100%;
+   width: 100%;  
 }
 
 .place_headings {

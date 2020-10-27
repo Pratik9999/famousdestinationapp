@@ -13,14 +13,14 @@ const Slider = ({ bestPlacesName, countryName }) => {
    const renderPlace = async () => {
 
       const resp = await fetch(
-      `https://famous-destination.herokuapp.com/famousdestination/api/places/country/${countryName}`); 
+      `http://localhost:8080/famousdestination/api/places/country/${countryName}`);  
       const data = await resp.json();
 
       const newData = data.map((place) => {
+         
+         let url = place.placeImgUrl + "?width=600&height=600";    
 
-         fetch(place.placeImgUrl)
-         .then(resp => resp.blob())
-         .then(data => place.placeImgUrl = URL.createObjectURL(data));
+         Object.assign(place, { placeImgUrl : url });    
 
          return place;
 
@@ -30,7 +30,7 @@ const Slider = ({ bestPlacesName, countryName }) => {
    
       setTimeout(() => {
          setIsLoading(false);
-      }, 5000);    
+      }, 5000);     
 
    }
 
