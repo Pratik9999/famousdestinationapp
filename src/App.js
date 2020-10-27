@@ -39,10 +39,10 @@ const App = () => {
     setSearchValue(event.target.value);
   }
 
-  const fetchingPlaceByCountryName = async (countryName) => {
+  const fetchingPlaceByCountryName = async (countryName) => { 
 
-    const resp = await fetch(
-    `http://localhost:8080/famousdestination/api/places/country/${countryName}`);
+    const resp = await fetch( 
+    `https://famous-destination.herokuapp.com/famousdestination/api/places/country/${countryName}`);
     const data = await resp.json();
 
       if(!(data.hasOwnProperty('status'))) {

@@ -13,12 +13,12 @@ const Slider = ({ bestPlacesName, countryName }) => {
    const renderPlace = async () => {
 
       const resp = await fetch(
-      `http://localhost:8080/famousdestination/api/places/country/${countryName}`);  
+      `https://famous-destination.herokuapp.com/famousdestination/api/places/country/${countryName}`);   
       const data = await resp.json();
 
       const newData = data.map((place) => {
          
-         let url = place.placeImgUrl + "?width=600&height=600";    
+         let url = place.placeImgUrl + "?width=600&height=600";     
 
          Object.assign(place, { placeImgUrl : url });    
 
